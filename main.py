@@ -1,4 +1,4 @@
-############################################# IMPORTING ################################################
+############################################# importing stuff ################################################
 
 import tkinter as tk
 
@@ -29,7 +29,7 @@ import threading
 
 ############################################# THEME SETTINGS ################################################
 
-# Adjusted theme for improved spacing and layout
+
 
 theme = {
 
@@ -90,8 +90,6 @@ def assure_path_exists(path):
     if not os.path.exists(d):
 
         os.makedirs(d)
-
-
 
 
 def TakeImages():
@@ -411,7 +409,7 @@ def TrackImages():
     assure_path_exists("Attendance/")
     assure_path_exists("StudentDetails/")
 
-    # Load recognizer
+    
     try:
         recognizer = cv2.face.LBPHFaceRecognizer_create()
     except:
@@ -425,7 +423,7 @@ def TrackImages():
 
     recognizer.read(train_file)
 
-    # Load Haarcascade (FIXED PATH)
+    
     faceCascade = cv2.CascadeClassifier(
         cv2.data.haarcascades + "haarcascade_frontalface_default.xml"
     )
@@ -498,24 +496,24 @@ def TrackImages():
 
         cv2.imshow('Taking Attendance', im)
 
-        # 🔥 EXIT CONDITIONS
+        
 
-        # 1. Press 'q'
+        # Press 'q' for exiting camera loop 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
-        # 2. If OpenCV window closed manually
+        
         if cv2.getWindowProperty('Taking Attendance', cv2.WND_PROP_VISIBLE) < 1:
             break
 
-        # 3. If Tkinter window closed
+        
         try:
             if not window.winfo_exists():
                 break
         except:
             break
 
-        # 4. Auto-stop after 30 seconds
+        
         if time.time() - start_time > 30:
             break
 
@@ -557,7 +555,7 @@ def start_TrackImages():
 
 def clear_data():
 
-    # Ask for password first
+    
 
     pw = tsd.askstring("Password", "Enter password to clear student data:", show="*")
 
@@ -565,7 +563,7 @@ def clear_data():
 
         return
 
-    # Read the password from "psd.txt"
+    
 
     try:
 
@@ -585,7 +583,7 @@ def clear_data():
 
         return
 
-    # If password is correct, clear the StudentDetails CSV file by writing just the header row
+    
 
     details_file = "StudentDetails/StudentDetails.csv"
 
@@ -599,9 +597,7 @@ def clear_data():
 
 
 
-##################################################################################
 
-######################################## USED STUFFS ############################################
 
 global key
 
@@ -633,7 +629,7 @@ attendance_process = None
 
 ##################################################################################
 
-######################################## MAIN GUI CODE ###########################################
+######################################## main gui shit ###########################################
 
 if __name__ == '__main__':
 
